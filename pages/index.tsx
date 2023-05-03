@@ -6,11 +6,12 @@ import {
   ReactFragment,
   ReactPortal,
   Key,
+  useMemo,
 } from "react";
 import { Pagination } from "../models";
 import { data } from "autoprefixer";
 import { GetServerSideProps } from "next";
-import { UserCard, Pagination as PaginationComponent } from "@/components/";
+import { UserCard, Pagination as PaginationComponent, ShortMenu } from "@/components/";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,9 +31,13 @@ export async function getServerSideProps(context) {
 export default function Home(props: PaginationProps) {
   console.log(props);
 
+
   return (
-    <main>
-      <div className="container mx-auto xl:max-w-screen-xl">
+    <main className="bg-white">
+      <div className="container mx-auto xl:max-w-screen-xl bg-gray-300">
+        <div className="py-2 px-2">
+        <ShortMenu selectedOption="First Name" options={["First Name", "Last Name", "ID"]} onChange={(option) => {}}  />
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-x-2 gap-y-8">
           {props.data.map((item, index) => {
             return <UserCard key={index} user={item} />;

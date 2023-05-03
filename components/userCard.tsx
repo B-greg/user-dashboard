@@ -8,14 +8,14 @@ type UserCardProps = {
 
 const UserCard: FC<UserCardProps> = ({ user }): ReactElement => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 py-1 px-2">
+    <div className="bg-white border border-gray-200 rounded-lg shadow py-1 px-2">
 
         <Image
           className="max-w-full"
           width={512}
           height={512}
           src={user.avatar}
-          alt="User Picture"
+          alt="User Picture"        
         />
         <p>#{user.id}</p>
 
@@ -38,9 +38,9 @@ type TableBodyProps = {
 const TableBody: FC<TableBodyProps> = ({ name, value }): ReactElement => {
   return (
     <tr>
-      <td className="font-bold whitespace-nowrap">{name}</td>
-      <td>:</td>
-      <td className="break-all">{value}</td>
+      <td className="font-bold whitespace-nowrap text-black">{name}</td>
+      <td className="text-black">:</td>
+      <td className="break-all text-black">{value}</td>
     </tr>
   );
 };
