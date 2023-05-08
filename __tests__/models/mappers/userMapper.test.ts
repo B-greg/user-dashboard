@@ -8,6 +8,7 @@ import {
 } from "@/models";
 
 describe("mapResponsePaginationToPagination", () => {
+  // Given
   const responsePagination: ResponsePaginationUsers = {
     page: 2,
     per_page: 10,
@@ -17,9 +18,11 @@ describe("mapResponsePaginationToPagination", () => {
   };
 
   it("should map response pagination to pagination object correctly", () => {
+    // When
     const pagination: Pagination =
       mapResponsePaginationToPagination(responsePagination);
 
+    // Then
     expect(pagination).toEqual({
       page: 2,
       perPage: 10,
@@ -30,6 +33,7 @@ describe("mapResponsePaginationToPagination", () => {
 });
 
 describe("mapResponseUsersToUsers", () => {
+  // Given
   const responseUsers: ResponseUser[] = [
     {
       id: 1,
@@ -48,8 +52,9 @@ describe("mapResponseUsersToUsers", () => {
   ];
 
   it("should map response users to user objects correctly", () => {
+    // When
     const users: User[] = mapResponseUsersToUsers(responseUsers);
-
+    // Then
     expect(users).toEqual([
       {
         id: 1,

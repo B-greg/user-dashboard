@@ -1,16 +1,9 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactFragment,
-  ReactPortal,
-  Key,
-  useMemo,
-  useState,
-  useEffect,
-  useRef,
-} from "react";
+  Pagination as PaginationComponent,
+  ShortMenu,
+  UserCard,
+} from "@/components/";
+import { sortUserByOption } from "@/helpers/sortHelper";
 import {
   Pagination,
   SortOption,
@@ -18,15 +11,10 @@ import {
   mapResponsePaginationToPagination,
   mapResponseUsersToUsers,
 } from "@/models";
-import { data } from "autoprefixer";
-import { GetServerSideProps } from "next";
-import {
-  UserCard,
-  Pagination as PaginationComponent,
-  ShortMenu,
-} from "@/components/";
-import { sortUserByOption } from "@/helpers/sortHelper";
 import { stringToSortOption } from "@/models/SortOption";
+import { getRestUsers } from "@/service/api/users";
+import { Inter } from "next/font/google";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,10 +25,8 @@ interface PaginationProps {
 }
 
 // This gets called on every request
-export async function getServerSideProps(context) {
-  const data = await fetch(`https://reqres.in/api/users?page=1`).then((res) =>
-    res.json()
-  );
+export async function getServerSideProps() {
+  const data = await getRestUsers();
   return {
     props: {
       pagination: mapResponsePaginationToPagination(data),
@@ -62,12 +48,10 @@ export default function Home(props: PaginationProps) {
   useEffect(() => {
     // Don't run this use effect when the component mount
     if (didMount.current) {
-      fetch(`https://reqres.in/api/users?page=${page}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setPagination(mapResponsePaginationToPagination(data));
-          setUsers(mapResponseUsersToUsers(data.data));
-        });
+      getRestUsers(page).then((data) => {
+        setPagination(mapResponsePaginationToPagination(data));
+        setUsers(mapResponseUsersToUsers(data.data));
+      });
     } else {
       didMount.current = true;
     }
@@ -80,8 +64,10 @@ export default function Home(props: PaginationProps) {
 
   return (
     <main className="bg-white">
-      <div className="container mx-auto xl:max-w-screen-xl bg-gray-300">
-        <div className="py-2 px-2">
+      <div className="container mx-auto xl:max-w-screen-xl bg-gray-300 py-6 px-6">
+        <p className="mt-1 mb-4 text-xl text-black font-bold">User Dashboard</p>
+        <p className="my-1 text-lg text-black font-bold">Sort</p>
+        <div className="py-2">
           <ShortMenu
             selectedOption="First Name"
             options={Object.values(SortOption)}
