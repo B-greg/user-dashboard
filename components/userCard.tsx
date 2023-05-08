@@ -1,6 +1,6 @@
-import React, { FC, ReactElement, memo, use } from "react";
-import User from "../models/users";
 import Image from "next/image";
+import { FC, ReactElement, memo } from "react";
+import User from "../models/users";
 
 type UserCardProps = {
   user: User;
@@ -9,24 +9,23 @@ type UserCardProps = {
 const UserCard: FC<UserCardProps> = ({ user }): ReactElement => {
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow py-1 px-2">
+      <Image
+        className="max-w-full"
+        width={512}
+        height={512}
+        src={user.avatar}
+        alt="User Picture"
+      />
+      <p>#{user.id}</p>
 
-        <Image
-          className="max-w-full"
-          width={512}
-          height={512}
-          src={user.avatar}
-          alt="User Picture"        
-        />
-        <p>#{user.id}</p>
-
-        <table className="table-auto">
-          <tbody>
-          <TableBody name="First Name" value={user.first_name}  />
-          <TableBody name="Last Name" value={user.last_name}  />
-          <TableBody name="Email" value={user.email}  />
-          </tbody>
-        </table>
-      </div>
+      <table className="table-auto">
+        <tbody>
+          <TableBody name="First Name" value={user.firstName} />
+          <TableBody name="Last Name" value={user.lastName} />
+          <TableBody name="Email" value={user.email} />
+        </tbody>
+      </table>
+    </div>
   );
 };
 

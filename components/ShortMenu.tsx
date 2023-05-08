@@ -1,10 +1,8 @@
-import React, {
-  FC,
-  ReactElement,
-  memo,
-  use,
-  useCallback,
-  useMemo,
+import {
+    FC,
+    ReactElement,
+    memo,
+    useCallback
 } from "react";
 
 type ShortMenuProps = {

@@ -1,5 +1,5 @@
-import Pagination from "./pagination";
-import UserCard from "./userCard";
+import Pagination from "./Pagination";
+import UserCard from "./UserCard";
 import ShortMenu from "./ShortMenu"
 
 export {

@@ -1,11 +1,8 @@
-import User from "./users";
-
 type Pagination = {
-    page: number;
-    per_page: number;
-    total: number;
-    total_pages: number;
-    data: User[];
-  };
+  page: number;
+  perPage: number;
+  total: number;
+  totalPages: number;
+};
 
 export default Pagination;

@@ -1,5 +1,5 @@
-import React, { FC, ReactElement, memo, use, useMemo } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import { FC, ReactElement, memo, useMemo } from "react";
 
 type PaginationProps = {
   currentPage: number;
@@ -50,7 +50,6 @@ const Pagination: FC<PaginationProps> = (props): ReactElement => {
 
   return (
     <div className="flex items-center justify-between px-4 py-3 ">
-
       <div className="flex flex-1 sm:items-center sm:justify-center">
         <div>
           <nav
