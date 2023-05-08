@@ -26,6 +26,7 @@ import {
   ShortMenu,
 } from "@/components/";
 import { sortUserByOption } from "@/helpers/sortHelper";
+import { stringToSortOption } from "@/models/SortOption";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -85,13 +86,7 @@ export default function Home(props: PaginationProps) {
             selectedOption="First Name"
             options={Object.values(SortOption)}
             onChange={(option) => {
-              setSortOption(
-                SortOption[
-                  Object.keys(SortOption)[
-                    Object.values(SortOption).indexOf(option as SortOption)
-                  ]
-                ]
-              );
+              setSortOption(stringToSortOption(option) ?? SortOption.FirstName);
             }}
           />
         </div>

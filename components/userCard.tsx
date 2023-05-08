@@ -16,7 +16,7 @@ const UserCard: FC<UserCardProps> = ({ user }): ReactElement => {
         src={user.avatar}
         alt="User Picture"
       />
-      <p>#{user.id}</p>
+      <p className="text-blue-500">{`#${user.id}`}</p>
 
       <table className="table-auto">
         <tbody>
@@ -39,7 +39,7 @@ const TableBody: FC<TableBodyProps> = ({ name, value }): ReactElement => {
     <tr>
       <td className="font-bold whitespace-nowrap text-black">{name}</td>
       <td className="text-black">:</td>
-      <td className="break-all text-black">{value}</td>
+      <td className="break-all text-blue-500">{value}</td>
     </tr>
   );
 };

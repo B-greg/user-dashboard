@@ -16,13 +16,13 @@ export function mapResponseUsersToUsers(responseUsers: ResponseUser[]): User[] {
   const users: User[] = [];
 
   responseUsers.map((user) => {
-    users.push(mapResponseUseToUsers(user));
+    users.push(mapResponseUserToUsers(user));
   });
 
   return users;
 }
 
-function mapResponseUseToUsers(responseUsers: ResponseUser): User {
+function mapResponseUserToUsers(responseUsers: ResponseUser): User {
   return {
     id: responseUsers.id,
     email: responseUsers.email,

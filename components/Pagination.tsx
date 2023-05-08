@@ -60,8 +60,12 @@ const Pagination: FC<PaginationProps> = (props): ReactElement => {
               className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-indigo-200 focus:z-20 focus:outline-offset-0"
               onClick={() => onChange(1)}
             >
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+              <ChevronLeftIcon
+                className="h-5 w-5"
+                aria-hidden="true"
+                aria-label="Previous"
+                data-testid="button-previous"
+              />
             </div>
 
             {paginationRange?.map((item, _) => {
@@ -69,6 +73,7 @@ const Pagination: FC<PaginationProps> = (props): ReactElement => {
                 <div
                   key={item}
                   aria-current="page"
+                  role="button"
                   className={`${
                     item === currentPage
                       ? "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -84,8 +89,13 @@ const Pagination: FC<PaginationProps> = (props): ReactElement => {
               className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-indigo-200 focus:z-20 focus:outline-offset-0"
               onClick={() => onChange(totalPages)}
             >
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+              {" "}
+              <ChevronRightIcon
+                className="h-5 w-5"
+                aria-hidden="true"
+                aria-label="Next"
+                data-testid="button-next"
+              />
             </div>
           </nav>
         </div>
